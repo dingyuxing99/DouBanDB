@@ -23,7 +23,7 @@ public class CommentDAOMSImpl extends DAOBase implements CommentDAO{
 	private static final String SEARCH_COMMENT_SQL = 
 			"SELECT * from Comment where movieid=?";
 	private static final String LIKE_COMMENT_SQL =
-			"SELECT * from [like] where commentid=?";
+			"SELECT * from like where commentid=?";
 	@Override
 	public boolean addComment(Comment c) throws DAOException {
 		// TODO Auto-generated method stub

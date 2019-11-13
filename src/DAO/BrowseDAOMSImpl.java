@@ -12,15 +12,15 @@ import Bean.Browse;
 public class BrowseDAOMSImpl extends DAOBase implements BrowseDAO{
 
 	private static final String ADD_browse_SQL =
-			"INSERT INTO [browse](userid, movieid) VALUES (?, ?)";
+			"INSERT INTO browse(userid, movieid) VALUES (?, ?)";
 	private static final String UPDATE_browse_SQL =
-			"UPDATE [browse] set userid=?, movieid=?, browsetime=? where browseid=?";
+			"UPDATE browse set userid=?, movieid=?, browsetime=? where browseid=?";
 	private static final String GET_browse_SQL = 
-			"SELECT * from [browse] where browseid=?";
+			"SELECT * from browse where browseid=?";
 	private static final String DELETE_browse_SQL = 
-			"DELETE from [browse] where browseid=?";
+			"DELETE from browse where browseid=?";
 	private static final String SEARCH_browse_SQL = 
-			"SELECT * from [browse] where userid=?";
+			"SELECT * from browse where userid=?";
 			
 	@Override
 	public void addbrowse(Browse b) throws DAOException {
