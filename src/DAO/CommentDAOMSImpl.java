@@ -1,0 +1,176 @@
+package DAO;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+
+import Bean.Comment;
+
+public class CommentDAOMSImpl extends DAOBase implements CommentDAO{
+	private static final String ADD_COMMENT_SQL =
+			"INSERT INTO comment( userid,movieid,text,score)"
+			+ " VALUES (?, ?, ?, ?) ";
+	private static final String UPDATE_COMMENT_SQL =
+			"UPDATE Comment set userid=?, movieid=?, text=?, "
+			+ "time=?, score=? where movieid=?";
+	private static final String GET_COMMENT_SQL = 
+			"SELECT * from Comment where commentid=?";
+	private static final String DELETE_COMMENT_SQL = 
+			"DELETE from Comment where commentid=?";
+	private static final String SEARCH_COMMENT_SQL = 
+			"SELECT * from Comment where movieid=?";
+	private static final String LIKE_COMMENT_SQL =
+			"SELECT * from [like] where commentid=?";
+	@Override
+	public boolean addComment(Comment c) throws DAOException {
+		// TODO Auto-generated method stub
+		Connection conn=null;
+		PreparedStatement pstmt=null;
+		try{
+			conn = C3P0JdbcUtil.getConnection();
+			pstmt = conn.prepareStatement(ADD_COMMENT_SQL);
+			pstmt.setInt(1, c.getUserid());
+			pstmt.setInt(2, c.getMovieid());
+			pstmt.setString(3, c.getText());
+			pstmt.setInt(4, c.getScore());
+			pstmt.executeUpdate();
+			
+			return true;
+		}catch(SQLException e){
+			e.printStackTrace();
+		}finally{
+			C3P0JdbcUtil.release(conn, pstmt, null);
+		}
+		return false;
+	}
+
+	@Override
+	public void updateComment(Comment c) throws DAOException {
+		// TODO Auto-generated method stub
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		
+		try{
+			conn = C3P0JdbcUtil.getConnection();
+			pstmt = conn.prepareStatement(UPDATE_COMMENT_SQL);
+			pstmt.setInt(1, c.getUserid());
+			pstmt.setInt(2, c.getMovieid());
+			pstmt.setString(3, c.getText());
+			pstmt.setString(4, c.getTime());
+			pstmt.setInt(5, c.getScore());
+			pstmt.setInt(6, c.getMovieid());
+			pstmt.executeUpdate();
+		}catch(SQLException e){
+			e.printStackTrace();
+		}finally{
+			C3P0JdbcUtil.release(conn, pstmt, null);
+		}
+	}
+
+	@Override
+	public Comment getComment(int commentid) throws DAOException {
+		// TODO Auto-generated method stub
+		Connection conn=null;
+		PreparedStatement pstmt=null;
+		ResultSet rs=null;
+		try{
+			conn = C3P0JdbcUtil.getConnection();
+			pstmt = conn.prepareStatement(GET_COMMENT_SQL);
+			pstmt.setInt(1, commentid);
+			rs = pstmt.executeQuery();
+			if(rs.next()){
+				Comment comment = new Comment();
+				comment.setCommentid(commentid);
+				comment.setUserid(rs.getInt("userid"));
+				comment.setMovieid(rs.getInt("movieid"));
+				comment.setText(rs.getString("text"));
+				comment.setTime(rs.getString("time"));
+				comment.setScore(rs.getInt("score"));
+				return comment;
+			}
+		}catch(SQLException e){
+			e.printStackTrace();
+		}finally{
+			C3P0JdbcUtil.release(conn, pstmt, null);
+		}
+		return null;
+	}
+
+	@Override
+	public void deleteComment(int commentid) throws DAOException {
+		// TODO Auto-generated method stub
+		Connection conn=null;
+		PreparedStatement pstmt=null;
+		try{
+			conn = C3P0JdbcUtil.getConnection();
+			pstmt = conn.prepareStatement(DELETE_COMMENT_SQL);
+			pstmt.setInt(1, commentid);
+			pstmt.executeUpdate();
+			
+		}catch(SQLException e){
+			e.printStackTrace();
+		}finally{
+			C3P0JdbcUtil.release(conn, pstmt, null);
+		}
+	}
+
+	@Override
+	public List<Comment> Search(int movieid) throws DAOException {
+		// TODO Auto-generated method stub
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		List<Comment> comList = new ArrayList<Comment>();
+		try{
+			conn = C3P0JdbcUtil.getConnection();
+			pstmt = conn.prepareStatement(SEARCH_COMMENT_SQL);
+			pstmt.setInt(1,movieid);
+			rs = pstmt.executeQuery();
+			while(rs.next()){
+				Comment comment = new Comment();
+				comment.setCommentid(rs.getInt("commentid"));
+				comment.setUserid(rs.getInt("userid"));
+				comment.setMovieid(rs.getInt("movieid"));
+				comment.setText(rs.getString("text"));
+				comment.setTime(rs.getString("time"));
+				comment.setScore(rs.getInt("score"));
+				comList.add(comment);
+			}
+			return comList;
+		}catch(SQLException e){
+			e.printStackTrace();
+		}finally{
+			C3P0JdbcUtil.release(conn, pstmt, null);
+		}
+		return comList;
+	}
+
+	@Override
+	public int likeComment(int commentid) throws DAOException {
+		// TODO Auto-generated method stub
+		Connection conn=null;
+		PreparedStatement pstmt=null;
+		ResultSet rs=null;
+		try{
+			conn = C3P0JdbcUtil.getConnection();
+			pstmt = conn.prepareStatement(LIKE_COMMENT_SQL);
+			pstmt.setInt(1, commentid);
+			rs = pstmt.executeQuery();
+			int likenum = 0;
+			while(rs.next()) {
+				likenum++;
+			}
+			return likenum;
+			
+		}catch(SQLException e){
+			e.printStackTrace();
+		}finally{
+			C3P0JdbcUtil.release(conn, pstmt, null);
+		}		
+		return 0;
+	}
+
+}
