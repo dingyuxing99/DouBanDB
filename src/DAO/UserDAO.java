@@ -11,6 +11,4 @@ public interface UserDAO {
 	public User getUser(int id)throws DAOException;
 	public List<User> searchUser(String name)throws DAOException;
 	public boolean likeComment(int userid, int commentid) throws DAOException;
-	
-
 }
