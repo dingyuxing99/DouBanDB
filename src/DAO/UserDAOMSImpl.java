@@ -9,7 +9,7 @@ import java.util.List;
 
 import Bean.User;
 
-public abstract class UserDAOMSImpl extends DAOBase implements UserDAO {
+public class UserDAOMSImpl extends DAOBase implements UserDAO {
 	
 	public static final String ADD_USER_SQL = "INSERT INTO user(username, password, email) VALUES (?, ?, ?)";
 	public int addUser(User u) throws DAOException {
