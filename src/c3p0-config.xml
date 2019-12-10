@@ -2,7 +2,7 @@
 
 	<default-config>
 		<property name="driverClass">com.microsoft.sqlserver.jdbc.SQLServerDriver</property>
-		<property name="jdbcUrl">jdbc:sqlserver://xxx.xxx.xxx.xxx:xxxx;databaseName=Movie</property>
+		<property name="jdbcUrl">jdbc:sqlserver://127.0.0.1:1433;databaseName=Movie</property>
 		<property name="user">xxx</property>
 		<property name="password">xxx</property>
 		
@@ -11,9 +11,9 @@
 		<property name="maxPoolsize">20</property>
 	</default-config>
 	
-	<named-config name="SQLServer">
+	<named-config>
 		<property name="driverClass">com.microsoft.sqlserver.jdbc.SQLServerDriver</property>
-		<property name="jdbcUrl">jdbc:sqlserver://xxx.xxx.xxx.xxx:xxxx;databaseName=Movie</property>
+		<property name="jdbcUrl">jdbc:sqlserver://127.0.0.1:1433;baseName=Movie</property>
 		<property name="user">xxx</property>
 		<property name="password">xxx</property>
 		
