@@ -18,7 +18,7 @@ public class regist_Test {
 		u.setEmail("zhangying@163.com");
 		ua.register(u);
 		System.out.println("\n若用户名不重复：");
-		u.setUsername("zy2019");
+		u.setUsername("zy");
 		ua.register(u);
 	}
 

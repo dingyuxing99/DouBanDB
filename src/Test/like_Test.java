@@ -11,13 +11,14 @@ public class like_Test {
 		// 登录测试
 		int id;
 		System.out.println("1. 用户登录：");
-		id = ua.login(1, "2019");
+		id = ua.login(53, "2019");
 		//测试点赞
 		System.out.println("2. 测试点赞：");
 		System.out.println("\n点赞评论：");
-		ua.like_comment(id, 111);
+		ua.like_comment(id, 78);
+		ua.like_comment(id, 84);
 		System.out.println("\n点赞已点赞过的评论：");
-		ua.like_comment(id, 111);
+		ua.like_comment(id, 78);
 	}
 
 }

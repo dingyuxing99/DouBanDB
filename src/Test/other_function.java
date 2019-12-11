@@ -13,10 +13,10 @@ public class other_function {
 		ma.show_movie_by_director(1);
 		ma.show_movie_by_director(2);
 		System.out.println("**************测试通过电影类型检索电影**************");
-		ma.search_movie_by_type("奇幻");
+		ma.search_movie_by_type("动画");
 		System.out.println("**************查看评论**************");
 		ma.comment_show(1);
 		System.out.println("**************评论按点赞排序**************");
-		ma.comment_sort(1);
+		ma.comment_sort(3);
 	}
 }

@@ -11,9 +11,9 @@ public class login_Test {
 		int id;
 		System.out.println("**************²âÊÔÓÃ»§µÇÂ¼***************");
 		System.out.println("\nÃÜÂë´íÎó£º");
-		id = ua.login(1,"001");
+		id = ua.login(53,"001");
 		System.out.println("\nÃÜÂëÕıÈ·£º");
-		id = ua.login(1, "2019");
+		id = ua.login(53, "2019");
 	}
 
 }

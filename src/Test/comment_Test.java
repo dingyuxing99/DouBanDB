@@ -22,14 +22,14 @@ public class comment_Test {
 		
 		System.out.println("\n删除评论：");
 		System.out.println("删除别人的评论：");
-		ma.comment_delete(1, 9);
+		ma.comment_delete(1, 89);
 		System.out.println("删除自己的评论：");
-		ma.comment_delete(1, 111);
+		ma.comment_delete(1, 79);
 		System.out.println("\n修改评论：");
 		System.out.println("修改别人的评论：");
-		ma.comment_update(1, 10, "啊啊啊啊啊啊啊啊啊啊啊啊", 5);
+		ma.comment_update(1, 90, "啊啊啊啊啊啊啊啊啊啊啊啊", 5);
 		System.out.println("修改自己的评论：");
-		ma.comment_update(1, 13, "奇奇怪怪看不懂", 2);
+		ma.comment_update(1, 96, "奇奇怪怪看不懂", 2);
 		System.out.println("测试评论按点赞排序");
 		ma.comment_sort(3);
 

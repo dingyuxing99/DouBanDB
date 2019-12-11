@@ -235,10 +235,10 @@ public class MovieAction {
 		System.out.println("电影名：\t" + movieimpl.getMovie(movieid).getMoviename());
 		System.out.println("所有评论：");
 		for(int i = cList.size() - 1; i >= 0; i--) {
-			System.out.println("评论人：" + userimpl.getUser(cList.get(i).getUserid()).getUsername());
+			//System.out.println("评论人：" + userimpl.getUser(cList.get(i).getUserid()).getUsername());
 			System.out.println("评论时间：" + cList.get(i).getTime());
 			System.out.println("打分：" + cList.get(i).getScore());
-			System.out.println("点赞数：" + commentimpl.likeComment(cList.get(i).getCommentid()));
+			//System.out.println("点赞数：" + commentimpl.likeComment(cList.get(i).getCommentid()));
 			System.out.println("评论内容：");
 			System.out.println(cList.get(i).getText());
 		}
@@ -320,7 +320,7 @@ public class MovieAction {
 		while(itr.hasNext()) {
 			CommentGrade comment = (CommentGrade)itr.next();
 			
-			System.out.println("评论人：" + userimpl.getUser(comment.getC().getUserid()).getUsername());
+			//System.out.println("评论人：" + userimpl.getUser(comment.getC().getUserid()).getUsername());
 			System.out.println("评论时间：" + comment.getC().getTime());
 			System.out.println("打分：" + comment.getC().getScore());
 			System.out.println("点赞数：" + commentimpl.likeComment(comment.getC().getCommentid()));
